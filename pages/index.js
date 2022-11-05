@@ -5,6 +5,7 @@ import UseAccount from "../sections/UseAccount";
 import { useAccount, Web3Button } from "@web3modal/react";
 import HumanCheck from "../sections/HumanCheck";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
+import { Divider, Center, VStack, StackDivider, Box } from "@chakra-ui/react";
 
 export default function Home() {
   const { account } = useAccount();
@@ -17,32 +18,32 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}></h1>
-
-        <p className={styles.description}>NationDO</p>
-
         <div className={styles.grid}>
-          <>
-            <Web3Button />{" "}
-            {account.isConnected ? (
-              <CheckCircleIcon w={3} h={3} color="green.500" />
-            ) : (
-              <WarningIcon w={3} h={3} color="red.500" />
-            )}
-            <HumanCheck />{" "}
-            {account.isConnected ? (
-              <CheckCircleIcon w={3} h={3} color="green.500" />
-            ) : (
-              <WarningIcon w={3} h={3} color="red.500" />
-            )}
-            {
-              //account.isConnected && (
-              // <>
-              //</>  <UseAccount />
-              //</></>
-              //)
-            }
-          </>
+          <VStack
+            divider={<StackDivider borderColor="gray.200" />}
+            spacing={5}
+            align="flex"
+          >
+            <Box h="100px">
+              <Web3Button />
+            </Box>
+
+            <Box h="100px">
+              <HumanCheck />{" "}
+              {account.isConnected ? (
+                <CheckCircleIcon w={3} h={3} color="green.500" />
+              ) : (
+                <WarningIcon w={3} h={3} color="red.500" />
+              )}
+              {
+                //account.isConnected && (
+                // <>
+                //</>  <UseAccount />
+                //</></>
+                //)
+              }
+            </Box>
+          </VStack>
         </div>
       </main>
 
@@ -52,10 +53,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          Powered by NationDO
         </a>
       </footer>
     </div>
