@@ -2,7 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import UseAccount from '../sections/UseAccount'
-import { useAccount, Web3Button, useConnectModal } from '@web3modal/react'
+import { useAccount, Web3Button } from '@web3modal/react'
+import HumanCheck from '../sections/HumanCheck'
+import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 
 
 
@@ -29,13 +31,14 @@ export default function Home() {
 
         <div className={styles.grid}>
           <>
-            <Web3Button />
-            {account.isConnected && (
-              <>
-                <UseAccount />
-
-              </>
-            )}
+            <Web3Button /> {account.isConnected ? <CheckCircleIcon w={3} h={3} color='green.500' /> : <WarningIcon w={3} h={3} color='red.500' />}
+            <HumanCheck /> {account.isConnected ? <CheckCircleIcon w={3} h={3} color='green.500' /> : <WarningIcon w={3} h={3} color='red.500' />}
+            {//account.isConnected && (
+              // <>
+              //</>  <UseAccount />
+              //</></>
+              //)
+            }
           </>
         </div>
       </main>
