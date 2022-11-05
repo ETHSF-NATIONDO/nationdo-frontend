@@ -1,7 +1,7 @@
 import { apolloClient } from "./helpers/apollo";
 import { gql } from "@apollo/client";
 
-export default async function handler(req, res) {
+export default async function getLensFollowers(req, res) {
   const { profileId } = req.query;
 
   const query = `
