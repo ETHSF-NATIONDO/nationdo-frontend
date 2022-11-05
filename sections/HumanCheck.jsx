@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import {
+    Center,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -7,9 +8,13 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    VStack
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 import WorldCoinAuth from './WorldCoinAuth'
+import LensAuth from './LensAuth'
+import PolygonAuth from './PolygonAuth'
+
 
 
 
@@ -25,7 +30,14 @@ export default function HumanCheck() {
                     <ModalHeader>Modal Title</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <WorldCoinAuth />
+                        <Center>
+                            <VStack>
+                                <WorldCoinAuth />
+                                <LensAuth width={{ base: '100%', sm: 'auto' }} />
+                                <PolygonAuth width={{ base: '100%', sm: 'auto' }} />
+                            </VStack>
+                        </Center>
+
 
                     </ModalBody>
 
