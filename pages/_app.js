@@ -1,6 +1,7 @@
 // pages/_app.js
 import { ChakraProvider } from '@chakra-ui/react'
 import { Web3Modal } from '@web3modal/react'
+import MainNavigation from '../components/MainNavigation'
 
 // Get projectID at https://cloud.walletconnect.com
 
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <ChakraProvider>
+        <MainNavigation />
         <Component {...pageProps} />
       </ChakraProvider>
       <Web3Modal config={config} />
