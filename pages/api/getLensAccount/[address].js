@@ -1,4 +1,4 @@
-import { apolloClient } from "./helpers/apollo";
+import { apolloClient } from "../helpers/apollo";
 import { gql } from "@apollo/client";
 
 export default async function getLensAccount(req, res) {
@@ -6,7 +6,7 @@ export default async function getLensAccount(req, res) {
 
   const query = `
 query Profiles {
-    profiles(request: { ownedBy: [${address}], limit: 1 }) {
+    profiles(request: { ownedBy: ["${address}"], limit: 1 }) {
       items {
         id
         name
@@ -96,19 +96,22 @@ query Profiles {
   }
 `;
 
-  const queryExample = async () => {
-    const response = await apolloClient.query({
-      query: gql(query),
-    });
-    console.log("Lens example data: ", response);
-    return response.data.profiles;
-  };
+  try {
+    const queryExample = async () => {
+      const response = await apolloClient.query({
+        query: gql(query),
+      });
+      const id = response.data.profiles.items[0].id;
+      return id;
+    };
 
-  const result = await queryExample();
+    const result = await queryExample();
+    res.status(200).json({ result });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 
   //   if (error) {
   //     res.status(400).json({ error: error.message });
   //   }
-
-  res.status(200).json({ result });
 }

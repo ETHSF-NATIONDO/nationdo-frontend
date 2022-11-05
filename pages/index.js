@@ -1,15 +1,14 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import UseAccount from '../sections/UseAccount'
-import { useAccount, Web3Button } from '@web3modal/react'
-import HumanCheck from '../sections/HumanCheck'
-import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
-import { Divider, Center, VStack, StackDivider, Box } from '@chakra-ui/react'
-
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import UseAccount from "../sections/UseAccount";
+import { useAccount, Web3Button } from "@web3modal/react";
+import HumanCheck from "../sections/HumanCheck";
+import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
+import { Divider, Center, VStack, StackDivider, Box } from "@chakra-ui/react";
 
 export default function Home() {
-  const { account } = useAccount()
+  const { account } = useAccount();
   return (
     <div className={styles.container}>
       <Head>
@@ -20,19 +19,24 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.grid}>
-
           <VStack
-            divider={<StackDivider borderColor='gray.200' />}
+            divider={<StackDivider borderColor="gray.200" />}
             spacing={5}
-            align='flex'
+            align="flex"
           >
-            <Box h='100px' >
+            <Box h="100px">
               <Web3Button />
             </Box>
 
-            <Box h='100px'>
-              <HumanCheck /> {account.isConnected ? <CheckCircleIcon w={3} h={3} color='green.500' /> : <WarningIcon w={3} h={3} color='red.500' />}
-              {//account.isConnected && (
+            <Box h="100px">
+              <HumanCheck />{" "}
+              {account.isConnected ? (
+                <CheckCircleIcon w={3} h={3} color="green.500" />
+              ) : (
+                <WarningIcon w={3} h={3} color="red.500" />
+              )}
+              {
+                //account.isConnected && (
                 // <>
                 //</>  <UseAccount />
                 //</></>
@@ -41,7 +45,6 @@ export default function Home() {
             </Box>
           </VStack>
         </div>
-
       </main>
 
       <footer className={styles.footer}>
@@ -54,7 +57,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
 }
-
-
