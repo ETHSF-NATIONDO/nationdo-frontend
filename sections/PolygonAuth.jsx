@@ -36,7 +36,7 @@ const qrProofRequestJson = {
                         allowed_issuers: ["*"],
                         req: {
                             isHuman: {
-                                $eq: "yes"
+                                "$eq": 1
                             }
                         },
                         schema: {

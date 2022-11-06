@@ -58,7 +58,8 @@ export default function Home() {
             </Box>
 
             <Box h="100px">
-              <HumanCheck />{" "}
+              <HumanCheck
+              />{" "}
               {account.isConnected ? (
                 <CheckCircleIcon w={3} h={3} color="green.500" />
               ) : (

@@ -22,7 +22,14 @@ export default function HumanCheck() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-            <Button onClick={onOpen} colorScheme='teal' variant='outline'>Human Check</Button>
+            <Button
+                size='md'
+                height='80px'
+                width='250px'
+                border='2px'
+                borderColor='green.500'
+                borderRadius={40}
+                onClick={onOpen} colorScheme='teal' variant='outline'>Human Check</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -33,7 +40,6 @@ export default function HumanCheck() {
                         <Center>
                             <VStack>
                                 <WorldCoinAuth />
-                                <LensAuth width={{ base: '100%', sm: 'auto' }} />
                                 <PolygonAuth width={{ base: '100%', sm: 'auto' }} />
                             </VStack>
                         </Center>
@@ -45,7 +51,6 @@ export default function HumanCheck() {
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        <Button variant='ghost'>Secondary Action</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

@@ -8,7 +8,7 @@ const WorldIDWidget = dynamic(
 export default function WorldCoinAuth() {
     return (
         <WorldIDWidget
-            actionId="wid_BPZsRJANxct2cZxVRyh80SFG" // obtain this from developer.worldcoin.org
+            actionId="wid_staging_b1dcbc65295b1f46a4d64fc96473c36b" // obtain this from developer.worldcoin.org
             signal="my_signal"
             enableTelemetry
             onSuccess={(verificationResponse) => console.log(verificationResponse)}
