@@ -5,6 +5,7 @@ import MainNavigation from '../components/MainNavigation'
 
 // Get projectID at https://cloud.walletconnect.com
 
+
 const config = {
   projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
   theme: 'dark',
@@ -13,6 +14,8 @@ const config = {
     appName: 'web3Modal'
   }
 }
+
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
