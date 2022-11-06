@@ -5,12 +5,21 @@ import UseAccount from "../sections/UseAccount";
 import { useAccount, Web3Button } from "@web3modal/react";
 import HumanCheck from "../sections/HumanCheck";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
-import { Container } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Avatar,
+  Badge,
+  Text,
+  Button,
+  Spacer,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function AddPeople() {
   const [lensId, setLensId] = useState(null);
+  const [allFollowers, setAllFollowers] = useState([]);
   const { account } = useAccount();
 
   const address = "0xcB7eA0eC36670AA13088C4372fe8636D4D2b574f";
@@ -28,12 +37,21 @@ export default function AddPeople() {
     getLensId();
   }, [address]);
 
+  const shortenAddress = (address) => {
+    return `${address.slice(0, 6)}...${address.slice(
+      address.length - 4,
+      address.length
+    )}`;
+  };
+
   useEffect(() => {
     const getLensFollowers = async (id) => {
-      axios
-        .get(`api/getLensFollowers/${id}`)
-        .then((response) => console.log(response.data));
+      axios.get(`api/getLensFollowers/${id}`).then((response) => {
+        setAllFollowers([...response.data.result.followers.items]);
+        console.log("response =>", response.data.result.followers.items);
+      });
     };
+
     if (lensId) {
       getLensFollowers(lensId);
     }
@@ -47,10 +65,45 @@ export default function AddPeople() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Container height={32} backgroundColor="tomato" w="100%">
-          <div>Hello world</div>
-        </Container>
+      <main className={styles.main}>
+        <Text>Choose people to endorse</Text>
+        <Box
+          minHeight={600}
+          w="100%"
+          borderRadius={33}
+          padding={10}
+          backgroundColor="#FFF"
+          marginTop={10}
+          //boxShadow="0 0 17"
+        >
+          {allFollowers &&
+            allFollowers.map((followers) => (
+              <Flex marginBottom={5} key={followers.wallet.address}>
+                <Avatar
+                  src={
+                    followers.wallet?.defaultProfile?.picture?.original?.url &&
+                    "https://ipfs.io/ipfs/" +
+                      followers.wallet.defaultProfile.picture.original.url.slice(
+                        7
+                      )
+                  }
+                />
+                <Box ml="3">
+                  <Text fontWeight="bold">
+                    {followers.wallet.defaultProfile.handle}
+                    <Badge ml="1" colorScheme="green">
+                      New
+                    </Badge>
+                  </Text>
+                  <Text fontSize="sm">
+                    {shortenAddress(followers.wallet.address)}
+                  </Text>
+                </Box>
+                <Spacer />
+                <Button>Click</Button>
+              </Flex>
+            ))}
+        </Box>
       </main>
     </div>
   );
