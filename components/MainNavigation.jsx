@@ -60,9 +60,7 @@ export default function MainNavigation() {
                             minW={0}
                         >
                             <Text>{truncateAddress(account.address)}</Text>
-                            <Button borderRadius={10} variant="outline">
-                                Connect wallet
-                            </Button>
+
                         </MenuButton>
                     </Menu>
                 </Flex>
