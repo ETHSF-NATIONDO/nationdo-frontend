@@ -11,17 +11,13 @@ import {
     Avatar,
     Input
 } from "@chakra-ui/react";
-import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import { truncateAddress } from "../utils/web3";
-import { useAccount } from '@web3modal/react'
-
-
-
+import { useAccount } from "@web3modal/react";
 
 export default function MainNavigation() {
-
-    const { account } = useAccount()
+    const { account } = useAccount();
 
     return (
         <Box
@@ -48,10 +44,12 @@ export default function MainNavigation() {
                     <Input bg="white" placeholder='Basic usage' />
                 </HStack>
 
-
                 <Flex alignItems={"center"}>
-
-                    {account.isConnected ? <CheckCircleIcon w={3} h={3} color='green.500' /> : <WarningIcon w={3} h={3} color='red.500' />}
+                    {account.isConnected ? (
+                        <CheckCircleIcon w={3} h={3} color="green.500" />
+                    ) : (
+                        <WarningIcon w={3} h={3} color="red.500" />
+                    )}
 
                     <Menu>
                         <MenuButton
@@ -61,10 +59,7 @@ export default function MainNavigation() {
                             cursor={"pointer"}
                             minW={0}
                         >
-                            <Text>
-
-                                {truncateAddress(account.address)}
-                            </Text>
+                            <Text>{truncateAddress(account.address)}</Text>
                             <Avatar
                                 size={"sm"}
                                 src={
@@ -72,11 +67,9 @@ export default function MainNavigation() {
                                 }
                             />
                         </MenuButton>
-
                     </Menu>
                 </Flex>
             </Flex>
-
-        </Box >
+        </Box>
     );
 }
