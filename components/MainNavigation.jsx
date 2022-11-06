@@ -22,7 +22,7 @@ export default function MainNavigation() {
 
   return (
     <Box
-      bg="white"
+      bg="#f2f9ff"
       px={4}
       sx={{
         position: "-webkit-sticky",
@@ -34,15 +34,17 @@ export default function MainNavigation() {
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack spacing={8} alignItems={"center"}>
-          <NextLink href="/">
-            <Img
-              boxSize="100px"
-              objectFit="contain"
-              src="/assets/logo1.png"
-              alt="nationDO"
-            />
-          </NextLink>
-          <Input bg="white" placeholder="Basic usage" />
+          <Box marginLeft={10}>
+            <NextLink href="/">
+              <Image
+                width={100}
+                height={100}
+                objectFit="contain"
+                src="/logo.png"
+                alt="nationDO"
+              />
+            </NextLink>
+          </Box>
         </HStack>
 
         <Flex alignItems={"center"}>
@@ -59,6 +61,7 @@ export default function MainNavigation() {
               variant={"link"}
               cursor={"pointer"}
               minW={0}
+              marginRight={10}
             >
               <Text>{truncateAddress(account.address)}</Text>
             </MenuButton>

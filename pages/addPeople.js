@@ -57,7 +57,9 @@ export default function AddPeople() {
     }
   }, [lensId]);
 
-  const handleClick = () => {};
+  //   const handleClick = (id) => {
+  //     () => router.push("/")
+  //   };
 
   return (
     <div className={styles.container}>
@@ -104,6 +106,7 @@ export default function AddPeople() {
                   </Text>
                 </Box>
                 <Spacer />
+
                 <Button>Click</Button>
               </Flex>
             ))}

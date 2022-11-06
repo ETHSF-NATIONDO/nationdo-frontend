@@ -5,10 +5,40 @@ import UseAccount from "../sections/UseAccount";
 import { useAccount, Web3Button } from "@web3modal/react";
 import HumanCheck from "../sections/HumanCheck";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
-import { Divider, Center, VStack, StackDivider, Box } from "@chakra-ui/react";
+import {
+  Divider,
+  Center,
+  VStack,
+  StackDivider,
+  Box,
+  Button,
+} from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+
+const InactiveStartEndorsement = () => {
+  return (
+    <Button backgroundColor={"#C7C7C7"} disabled>
+      Start Endorsement
+    </Button>
+  );
+};
+
+const StartEndorsement = () => {
+  const router = useRouter();
+  return (
+    <Button
+      backgroundColor={"#588BFF"}
+      color={"white"}
+      onClick={() => router.push("/addPeople")}
+    >
+      Start Endorsement
+    </Button>
+  );
+};
 
 export default function Home() {
   const { account } = useAccount();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,13 +49,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.grid}>
-
-          <VStack
-            divider={<StackDivider borderColor="gray.200" />}
-            spacing={5}
-            align="flex"
-          >
-            <Box h="100px"></Box>
+          <VStack spacing={5} align="flex" alignItems={"center"}>
+            <Box h="100px" fontSize="2xl" as="b">
+              Dorse your way in web3
+            </Box>
             <Box h="100px">
               <Web3Button />
             </Box>
@@ -45,10 +72,14 @@ export default function Home() {
                 //)
               }
             </Box>
+            {account.isConnected ? (
+              <StartEndorsement />
+            ) : (
+              <InactiveStartEndorsement />
+            )}
           </VStack>
-
         </div>
-      </main >
+      </main>
 
       <footer className={styles.footer}>
         <a
@@ -59,6 +90,6 @@ export default function Home() {
           Powered by NationDO
         </a>
       </footer>
-    </div >
+    </div>
   );
 }
