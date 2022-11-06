@@ -5,10 +5,12 @@ import EndorseAbi from "./../abi/EndorseContract.abi.json";
 import { ethers } from "ethers";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Puff } from "react-loader-spinner";
 
 const SkillsTab = ({ profile }) => {
   const [address, setAddress] = useState("0x8776655554");
   const [skills, setSkills] = useState([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   async function requestAccount() {
@@ -52,6 +54,7 @@ const SkillsTab = ({ profile }) => {
 
   const mintSBT = async (tokenURI) => {
     if (typeof window.ethereum !== "undefined") {
+      setLoading(true);
       await requestAccount();
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
@@ -65,6 +68,7 @@ const SkillsTab = ({ profile }) => {
         [tokenURI]
       );
       await transaction.wait();
+      setLoading(false);
       router.push("/success");
     }
   };
@@ -96,9 +100,28 @@ const SkillsTab = ({ profile }) => {
         className="basic-multi-select"
         classNamePrefix="select"
       />
-      <Button onClick={() => sendJSONtoIPFS()} marginTop={10}>
-        Send SBT
-      </Button>
+      {loading ? (
+        <Box marginTop={10}>
+          <Puff
+            height="80"
+            width="80"
+            radisu={1}
+            color="#E7F3FF"
+            ariaLabel="puff-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </Box>
+      ) : (
+        <Button
+          onClick={() => sendJSONtoIPFS()}
+          marginTop={10}
+          backgroundColor={"#E7F3FF"}
+        >
+          Send SBT
+        </Button>
+      )}
     </Box>
   );
 };
