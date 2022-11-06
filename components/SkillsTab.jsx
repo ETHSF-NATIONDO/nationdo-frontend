@@ -117,7 +117,8 @@ const SkillsTab = ({ profile }) => {
         <Button
           onClick={() => sendJSONtoIPFS()}
           marginTop={10}
-          backgroundColor={"#E7F3FF"}
+          backgroundColor={"#588BFF"}
+          color={"#FFF"}
         >
           Send SBT
         </Button>

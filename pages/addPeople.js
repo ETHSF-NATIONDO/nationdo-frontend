@@ -9,6 +9,7 @@ import {
   Text,
   Button,
   Spacer,
+  AvatarGroup,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -21,6 +22,13 @@ export default function AddPeople() {
   const { account } = useAccount();
 
   const address = "0xcB7eA0eC36670AA13088C4372fe8636D4D2b574f";
+
+  const linkings = [
+    "Lens follower",
+    "Mirror collector",
+    "Also @Buidler DAO member",
+    "Also @Moonbird holder",
+  ];
 
   useEffect(() => {
     const getLensId = async () => {
@@ -40,6 +48,11 @@ export default function AddPeople() {
       address.length - 4,
       address.length
     )}`;
+  };
+
+  const getRandom = () => {
+    const random = Math.floor(Math.random() * linkings.length);
+    return random;
   };
 
   useEffect(() => {
@@ -95,14 +108,37 @@ export default function AddPeople() {
                 <Box ml="3">
                   <Text fontWeight="bold">
                     {followers.wallet.defaultProfile.handle}
+                    <Badge ml="1" colorScheme="gray">
+                      {shortenAddress(followers.wallet.address)}
+                    </Badge>
                   </Text>
-                  <Text fontSize="sm">
-                    {shortenAddress(followers.wallet.address)}
-                  </Text>
+                  <Text fontSize="sm">{linkings[getRandom()]}</Text>
                 </Box>
                 <Spacer />
 
+                {/* <AvatarGroup size="sm" max={3} marginRight={20}>
+                  <Avatar
+                    name="Ryan Florence"
+                    src="https://bit.ly/ryan-florence"
+                  />
+                  <Avatar
+                    name="Segun Adebayo"
+                    src="https://bit.ly/sage-adebayo"
+                  />
+                  <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
+                  <Avatar
+                    name="Prosper Otemuyiwa"
+                    src="https://bit.ly/prosper-baba"
+                  />
+                  <Avatar
+                    name="Christian Nwamba"
+                    src="https://bit.ly/code-beast"
+                  />
+                </AvatarGroup> */}
+
                 <Button
+                  backgroundColor={"#588BFF"}
+                  color={"#FFF"}
                   onClick={() =>
                     handleClick(followers.wallet.defaultProfile.id)
                   }
