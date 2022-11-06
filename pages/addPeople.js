@@ -16,10 +16,12 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function AddPeople() {
   const [lensId, setLensId] = useState(null);
   const [allFollowers, setAllFollowers] = useState([]);
+  const router = useRouter();
   const { account } = useAccount();
 
   const address = "0xcB7eA0eC36670AA13088C4372fe8636D4D2b574f";
@@ -57,9 +59,9 @@ export default function AddPeople() {
     }
   }, [lensId]);
 
-  //   const handleClick = (id) => {
-  //     () => router.push("/")
-  //   };
+  const handleClick = (id) => {
+    router.push(`/endorse/${id}`);
+  };
 
   return (
     <div className={styles.container}>
@@ -97,9 +99,6 @@ export default function AddPeople() {
                 <Box ml="3">
                   <Text fontWeight="bold">
                     {followers.wallet.defaultProfile.handle}
-                    <Badge ml="1" colorScheme="green">
-                      New
-                    </Badge>
                   </Text>
                   <Text fontSize="sm">
                     {shortenAddress(followers.wallet.address)}
@@ -107,7 +106,13 @@ export default function AddPeople() {
                 </Box>
                 <Spacer />
 
-                <Button>Click</Button>
+                <Button
+                  onClick={() =>
+                    handleClick(followers.wallet.defaultProfile.id)
+                  }
+                >
+                  Pick
+                </Button>
               </Flex>
             ))}
         </Box>

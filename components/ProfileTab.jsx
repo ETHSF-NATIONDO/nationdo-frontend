@@ -1,31 +1,34 @@
 import { Divider } from "@chakra-ui/react";
-import { Grid, Box,Heading,Button,Text,GridItem } from '@chakra-ui/react'
-import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
+import { Grid, Box, Heading, Button, Text, GridItem } from "@chakra-ui/react";
+import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
 
-const ProfileTab = ()=>{
-    return (
-        <>
-            <Grid>
-            <Box maxW='32rem'>
-            <Avatar
-                size='lg'
-                name='Prosper Otemuyiwa'
-                src='https://bit.ly/prosper-baba'
-            />{' '}
-            <Heading mb={4}>brucewahne.eth</Heading>
-            <Text fontSize='xl'>
-                Paystack helps businesses in Africa get paid by anyone, anywhere in the
-                world
-            </Text>
-            <Button size='lg' colorScheme='green' mt='24px'>
-                Create a free account
-            </Button>
-            </Box>
-            
-            </Grid>
-            
-        </>
-    )
-}
+const shortenAddress = (address) => {
+  return `${address.slice(0, 6)}...${address.slice(
+    address.length - 4,
+    address.length
+  )}`;
+};
+
+const ProfileTab = ({ profile }) => {
+  console.log(profile);
+  return (
+    <>
+      <Grid w={"33%"} marginLeft={20}>
+        <Box maxW="32rem">
+          <Avatar
+            size="lg"
+            name="Prosper Otemuyiwa"
+            src={
+              profile.picture?.original?.url &&
+              "https://ipfs.io/ipfs/" + profile.picture.original.url.slice(7)
+            }
+          />{" "}
+          <Heading mb={4}>{profile && profile.handle}</Heading>
+          <Text fontSize="sm">{shortenAddress(profile.ownedBy)}</Text>
+        </Box>
+      </Grid>
+    </>
+  );
+};
 
 export default ProfileTab;

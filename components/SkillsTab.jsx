@@ -1,3 +1,6 @@
+import { Grid, Heading, Button } from "@chakra-ui/react";
+import { useState } from "react";
+import { default as ReactSelect } from "react-select";  
 import { Select, Grid } from '@chakra-ui/react'
 import { Heading, Button } from '@chakra-ui/react'
 import {useState} from "react"
@@ -7,10 +10,14 @@ import axios from 'axios';
 
 const SkillsTab = () => {
     const [address, setAddress] = useState("0x8776655554")
+    const [skills, setSkills] = useState([]);
 
     async function requestAccount() {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
     }
+
+    const handleChange = async (selected) => {
+        setSkills(selected);}
     
     const skillsArray = ["python", "solidity"];
     const tokenURIs = ["one", "two"]
@@ -57,30 +64,37 @@ const SkillsTab = () => {
         }
     }
 
-    
-    return (
-        <Grid>
-            <Heading as='h5' size='md'>
-            What they are good at?
-            </Heading>
-            <Select placeholder='Select option'>
-                <option value='option1'>Javascript</option>
-                <option value='option2'>Typescript</option>
-                <option value='option3'>Solidity</option>
-                <option value='option4'>CSS</option>
-                <option value='option5'>Rust</option>
-                <option value='option6'>Golang</option>
-                <option value='option7'>NextJs</option>
-                <option value='option8'>Python</option>
-                <option value='option9'>SQL</option>
-            </Select>
-            <Button onClick={sendJSONtoIPFS}>
-                SEND
-            </Button>
-            
-        </Grid>
+  const skillsSet = [
+    { value: 1, label: "Javascript" },
+    { value: 2, label: "Typescript" },
+    { value: 3, label: "Solidity" },
+    { value: 4, label: "CSS" },
+    { value: 5, label: "Rust" },
+    { value: 6, label: "Golang" },
+    { value: 7, label: "NextJs" },
+    { value: 8, label: "Python" },
+    { value: 9, label: "SQL" },
+  ];
 
-    )
-}
+  return (
+    <Grid w={"77%"} marginLeft={20}>
+      <Heading as="h5" size="md">
+        What they are good at?
+      </Heading>
+
+      <ReactSelect
+        placeholder="Select option"
+        options={skillsSet}
+        isMulti
+        isSearchable={true}
+        onChange={handleChange}
+        className="basic-multi-select"
+        classNamePrefix="select"
+        widht={"300px"}
+      />
+      <Button onClick={() => console.log(skills)}>SHOW</Button>
+    </Grid>
+  );
+};
 
 export default SkillsTab;
