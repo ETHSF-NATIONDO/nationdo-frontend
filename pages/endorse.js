@@ -16,7 +16,6 @@ const Endorse =  () => {
                         <Divider orientation='vertical'/>
                     </Center>
                     <SkillsTab/>
-
                 </Flex>
                 : 
                 <Flex flexDirection="column" justifyContent="center">
