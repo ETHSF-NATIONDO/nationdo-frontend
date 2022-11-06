@@ -11,6 +11,13 @@ import {
 } from "@chakra-ui/react";
 
 export default function Success() {
+  const shortenAddress = (address) => {
+    return `${address.slice(0, 12)}...${address.slice(
+      address.length - 4,
+      address.length
+    )}`;
+  };
+
   return (
     <div>
       <Head>
@@ -21,7 +28,7 @@ export default function Success() {
 
       <main className={styles.main}>
         <Text marginTop={20} fontSize="2xl" as="b">
-          Congrats! You endorse an SBT for them!
+          Congrats🎉! You endorse an SBT for them!
         </Text>
         <Box textAlign={"center"}>
           <Box
@@ -40,6 +47,12 @@ export default function Success() {
             </Text>
             <Text marginTop={30}>Endorsed by:</Text>
             <Text as="b">@sinaxyz</Text>
+            <Text marginTop={30}>WorldCoin proof:</Text>
+            <Text as="b">
+              {shortenAddress(
+                "0x063942fd7ea1616f17787d2e3374c1826ebcd2d41d2394d915098c73482fa59516145cee11d59158b4012a463f487725cb3331bf90a0472e17385832eeaec7a713164055fc43cc0f873d76752de0e35cc653346ec42232649d40f5b8ded28f202793c4e8d096493dc34b02ce4252785df207c2b76673924502ab56b7e844baf621025148173fc74682213753493e8c90e5c224fc43786fcd09b624115bee824618e57bd28caa301f6b21606e7dce789090de053e641bce2ce0999b64cdfdfb0a0734413914c21e4e858bf38085310d47cd4cc6570ed634faa2246728ad64c49f1f720a39530d82e1fae1532bd7ad389978b6f337fcd6fa6381869637596e63a1"
+              )}
+            </Text>
           </Box>
         </Box>
       </main>
