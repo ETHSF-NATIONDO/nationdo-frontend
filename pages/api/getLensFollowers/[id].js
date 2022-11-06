@@ -3,7 +3,6 @@ import { gql } from "@apollo/client";
 
 export default async function getLensFollowers(req, res) {
   const { id } = req.query;
-  console.log("id received in the api call", id);
 
   const query = `
   query Followers {
