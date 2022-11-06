@@ -57,6 +57,8 @@ export default function AddPeople() {
     }
   }, [lensId]);
 
+  const handleClick = () => {};
+
   return (
     <div className={styles.container}>
       <Head>
@@ -66,14 +68,16 @@ export default function AddPeople() {
       </Head>
 
       <main className={styles.main}>
-        <Text>Choose people to endorse</Text>
+        <Text marginTop={5} fontSize="2xl">
+          Choose people to endorse
+        </Text>
         <Box
           minHeight={600}
           w="100%"
           borderRadius={33}
           padding={10}
           backgroundColor="#FFF"
-          marginTop={10}
+          marginTop={5}
           //boxShadow="0 0 17"
         >
           {allFollowers &&
