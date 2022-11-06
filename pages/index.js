@@ -5,14 +5,7 @@ import UseAccount from "../sections/UseAccount";
 import { useAccount, Web3Button } from "@web3modal/react";
 import HumanCheck from "../sections/HumanCheck";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
-import {
-  Divider,
-  Center,
-  VStack,
-  StackDivider,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { VStack, Box, Button } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 
 const InactiveStartEndorsement = () => {
