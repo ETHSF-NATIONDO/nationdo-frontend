@@ -9,6 +9,7 @@ import {
     MenuButton,
     useColorModeValue,
     Avatar,
+    Input
 } from "@chakra-ui/react";
 import { CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import NextLink from "next/link";
@@ -44,6 +45,7 @@ export default function MainNavigation() {
                             alt="nationDO"
                         />
                     </NextLink>
+                    <Input bg="white" placeholder='Basic usage' />
                 </HStack>
 
 
