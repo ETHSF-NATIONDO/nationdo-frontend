@@ -1,6 +1,5 @@
-import { Divider } from "@chakra-ui/react";
-import { Grid, Box, Heading, Button, Text, GridItem } from "@chakra-ui/react";
-import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
+import { Heading, Text, Box } from "@chakra-ui/react";
+import { Avatar } from "@chakra-ui/react";
 
 const shortenAddress = (address) => {
   return `${address.slice(0, 6)}...${address.slice(
@@ -13,7 +12,7 @@ const ProfileTab = ({ profile }) => {
   console.log(profile);
   return (
     <>
-      <Grid w={"33%"} marginLeft={20}>
+      <Box w={"33%"} marginLeft={20}>
         <Box maxW="32rem">
           <Avatar
             size="lg"
@@ -24,9 +23,21 @@ const ProfileTab = ({ profile }) => {
             }
           />{" "}
           <Heading mb={4}>{profile && profile.handle}</Heading>
-          <Text fontSize="sm">{shortenAddress(profile.ownedBy)}</Text>
+          <Text fontSize="sm" marginBottom={20}>
+            {shortenAddress(profile.ownedBy)}
+          </Text>
+          <Text fontSize="md" as="b">
+            DAOs:
+          </Text>
+          <Text fontSize="md" marginBottom={20}>
+            [Buidler DAO], [See DAO], [BujiDAO]
+          </Text>
+          <Text fontSize="md" as="b">
+            Mostly used DApp:
+          </Text>
+          <Text fontSize="md">#OpenSea, #Gem, #SnapShot</Text>
         </Box>
-      </Grid>
+      </Box>
     </>
   );
 };
