@@ -59,11 +59,7 @@ export default function Home() {
             <Box h="100px">
               <HumanCheck onClick={() => setHumanCheck(!humanCheck)}
               />{" "}
-              {humanCheck ? (
-                <CheckCircleIcon w={3} h={3} color="green.500" />
-              ) : (
-                <WarningIcon w={3} h={3} color="red.500" />
-              )}
+
               {
                 //account.isConnected && (
                 // <>
