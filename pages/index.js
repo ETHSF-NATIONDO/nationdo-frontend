@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import React, { useState } from 'react';
+
 import UseAccount from "../sections/UseAccount";
 import { useAccount, Web3Button } from "@web3modal/react";
 import HumanCheck from "../sections/HumanCheck";
@@ -16,7 +18,9 @@ import {
 import { useRouter } from "next/navigation";
 
 const InactiveStartEndorsement = () => {
+
   return (
+
     <Button backgroundColor={"#C7C7C7"} disabled>
       Start Endorsement
     </Button>
@@ -38,6 +42,7 @@ const StartEndorsement = () => {
 
 export default function Home() {
   const { account } = useAccount();
+  const [humanCheck, setHumanCheck] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -53,14 +58,15 @@ export default function Home() {
             <Box h="100px" fontSize="2xl" as="b">
               Dorse your way in web3
             </Box>
-            <Box h="100px">
+            <Box>
               <Web3Button />
             </Box>
 
+
             <Box h="100px">
-              <HumanCheck
+              <HumanCheck onClick={() => setHumanCheck(!humanCheck)}
               />{" "}
-              {account.isConnected ? (
+              {humanCheck ? (
                 <CheckCircleIcon w={3} h={3} color="green.500" />
               ) : (
                 <WarningIcon w={3} h={3} color="red.500" />
