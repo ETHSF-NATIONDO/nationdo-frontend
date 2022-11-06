@@ -1,10 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import UseAccount from "../sections/UseAccount";
 import { useAccount, Web3Button } from "@web3modal/react";
-import HumanCheck from "../sections/HumanCheck";
-import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
