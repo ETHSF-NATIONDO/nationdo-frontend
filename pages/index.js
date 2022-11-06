@@ -19,11 +19,13 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.grid}>
+
           <VStack
             divider={<StackDivider borderColor="gray.200" />}
             spacing={5}
             align="flex"
           >
+            <Box h="100px"></Box>
             <Box h="100px">
               <Web3Button />
             </Box>
@@ -44,8 +46,9 @@ export default function Home() {
               }
             </Box>
           </VStack>
+
         </div>
-      </main>
+      </main >
 
       <footer className={styles.footer}>
         <a
@@ -56,6 +59,6 @@ export default function Home() {
           Powered by NationDO
         </a>
       </footer>
-    </div>
+    </div >
   );
 }

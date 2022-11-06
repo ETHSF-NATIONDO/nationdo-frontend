@@ -9,6 +9,7 @@ import {
   MenuButton,
   useColorModeValue,
   Avatar,
+  Input,
 } from "@chakra-ui/react";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
@@ -21,7 +22,7 @@ export default function MainNavigation() {
 
   return (
     <Box
-      bg={"#f2f9ff"}
+      bg="white"
       px={4}
       sx={{
         position: "-webkit-sticky",
@@ -33,17 +34,15 @@ export default function MainNavigation() {
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack spacing={8} alignItems={"center"}>
-          <Box marginLeft={10}>
-            <NextLink href="/">
-              <Image
-                width="100"
-                height="64"
-                objectFit="contain"
-                src="/logo.png"
-                alt="nationDO"
-              />
-            </NextLink>
-          </Box>
+          <NextLink href="/">
+            <Img
+              boxSize="100px"
+              objectFit="contain"
+              src="/assets/logo1.png"
+              alt="nationDO"
+            />
+          </NextLink>
+          <Input bg="white" placeholder="Basic usage" />
         </HStack>
 
         <Flex alignItems={"center"}>
@@ -62,12 +61,6 @@ export default function MainNavigation() {
               minW={0}
             >
               <Text>{truncateAddress(account.address)}</Text>
-              <Avatar
-                size={"sm"}
-                src={
-                  "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                }
-              />
             </MenuButton>
           </Menu>
         </Flex>
