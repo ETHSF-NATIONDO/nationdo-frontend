@@ -14,13 +14,14 @@ import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import { truncateAddress } from "../utils/web3";
 import { useAccount } from "@web3modal/react";
+import Image from "next/image";
 
 export default function MainNavigation() {
   const { account } = useAccount();
 
   return (
     <Box
-      bg={useColorModeValue("rgba(12,10,29,1.0)", "blue.900")}
+      bg={"#f2f9ff"}
       px={4}
       sx={{
         position: "-webkit-sticky",
@@ -32,14 +33,17 @@ export default function MainNavigation() {
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <HStack spacing={8} alignItems={"center"}>
-          <NextLink href="/">
-            <Img
-              boxSize="100px"
-              objectFit="contain"
-              src="/assets/logo1.png"
-              alt="nationDO"
-            />
-          </NextLink>
+          <Box marginLeft={10}>
+            <NextLink href="/">
+              <Image
+                width="100"
+                height="64"
+                objectFit="contain"
+                src="/logo.png"
+                alt="nationDO"
+              />
+            </NextLink>
+          </Box>
         </HStack>
 
         <Flex alignItems={"center"}>
